@@ -1,5 +1,5 @@
 import streamlit as st
-from genetic_algorithm_V3 import run_genetic_algorithm
+from genetic_algorithm_V4 import run_genetic_algorithm
 from utils_V3 import create_calendar_view
 
 st.title("Schedule Generation")
