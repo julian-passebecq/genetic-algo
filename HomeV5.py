@@ -1,8 +1,8 @@
 import streamlit as st
 
-st.set_page_config(page_title="Security Company Scheduler", layout="wide")
+st.set_page_config(page_title="Security Company Scheduler V5", layout="wide")
 
-st.title("Security Company Scheduler")
+st.title("Security Company Scheduler V5")
 st.write("Welcome to the Security Company Scheduler. Use the sidebar to navigate through different sections.")
 st.write("This application uses a genetic algorithm to generate optimal schedules for security personnel.")
 

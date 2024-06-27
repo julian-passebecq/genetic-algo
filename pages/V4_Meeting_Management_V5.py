@@ -53,7 +53,7 @@ def generate_meetings(start_date, num_clients=5):
     return events
 
 def show_meeting_management():
-    st.title("Meeting Management")
+    st.title("Meeting Management V5")
 
     if 'calendar_events' not in st.session_state:
         today = datetime.date.today()

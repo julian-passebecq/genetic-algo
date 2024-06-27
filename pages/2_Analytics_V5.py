@@ -2,9 +2,9 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
-from utils_V3 import calculate_metrics
+from utils_V5 import calculate_metrics
 
-st.title("Schedule Analytics")
+st.title("Schedule Analytics V5")
 
 if 'schedules' in st.session_state:
     best_schedule = st.session_state.schedules[0]

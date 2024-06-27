@@ -1,9 +1,7 @@
 import streamlit as st
 import plotly.graph_objects as go
-import plotly.figure_factory as ff
-import datetime
 
-st.title("How It Works")
+st.title("How It Works V5")
 
 explanation = """
 The Security Company Scheduler uses a genetic algorithm to optimize weekly schedules. 
