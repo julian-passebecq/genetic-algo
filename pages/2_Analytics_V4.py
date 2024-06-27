@@ -1,6 +1,7 @@
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
+import pandas as pd
 from utils_V3 import calculate_metrics
 
 st.title("Schedule Analytics")
@@ -44,16 +45,19 @@ if 'schedules' in st.session_state:
     col2.metric("Mismatched Skills", metrics["mismatched_skills"])
 
     st.subheader("Fitness Over Generations")
-    gen = st.session_state.logbook.select("gen")
-    fit_mins = st.session_state.logbook.select("min")
-    fit_maxs = st.session_state.logbook.select("max")
-    fit_avgs = st.session_state.logbook.select("avg")
+    if 'logbook' in st.session_state:
+        gen = st.session_state.logbook.select("gen")
+        fit_mins = st.session_state.logbook.select("min")
+        fit_maxs = st.session_state.logbook.select("max")
+        fit_avgs = st.session_state.logbook.select("avg")
 
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(x=gen, y=fit_mins, mode='lines', name='Min Fitness'))
-    fig.add_trace(go.Scatter(x=gen, y=fit_maxs, mode='lines', name='Max Fitness'))
-    fig.add_trace(go.Scatter(x=gen, y=fit_avgs, mode='lines', name='Avg Fitness'))
-    fig.update_layout(title='Fitness over Generations', xaxis_title='Generation', yaxis_title='Fitness')
-    st.plotly_chart(fig, use_container_width=True)
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=gen, y=fit_mins, mode='lines', name='Min Fitness'))
+        fig.add_trace(go.Scatter(x=gen, y=fit_maxs, mode='lines', name='Max Fitness'))
+        fig.add_trace(go.Scatter(x=gen, y=fit_avgs, mode='lines', name='Avg Fitness'))
+        fig.update_layout(title='Fitness over Generations', xaxis_title='Generation', yaxis_title='Fitness')
+        st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.warning("No fitness data available. Please generate a schedule first.")
 else:
-    st.write("No schedule generated yet. Please go to the Schedule Generation page.")
+    st.warning("No schedule generated yet. Please go to the Schedule Generation page.")
