@@ -1,5 +1,7 @@
 import streamlit as st
 import plotly.graph_objects as go
+import plotly.figure_factory as ff
+import datetime
 
 st.title("How It Works")
 
@@ -48,4 +50,19 @@ fig = go.Figure(data=[go.Sankey(
       value = [1, 1, 1, 1, 1]
   ))])
 fig.update_layout(title_text="Genetic Algorithm Process", font_size=10)
+st.plotly_chart(fig, use_container_width=True)
+
+st.subheader("Genetic Algorithm Timeline")
+gantt_data = [
+    dict(Task="Initialize Population", Start='2023-01-01', Finish='2023-01-02', Resource='Step 1'),
+    dict(Task="Evaluate Fitness", Start='2023-01-02', Finish='2023-01-03', Resource='Step 2'),
+    dict(Task="Selection", Start='2023-01-03', Finish='2023-01-04', Resource='Step 3'),
+    dict(Task="Crossover", Start='2023-01-04', Finish='2023-01-05', Resource='Step 4'),
+    dict(Task="Mutation", Start='2023-01-05', Finish='2023-01-06', Resource='Step 5'),
+    dict(Task="New Generation", Start='2023-01-06', Finish='2023-01-07', Resource='Step 6'),
+    dict(Task="Repeat Steps 2-6", Start='2023-01-07', Finish='2023-01-10', Resource='Iteration')
+]
+
+fig = ff.create_gantt(gantt_data, index_col='Resource', show_colorbar=True, group_tasks=True)
+fig.update_layout(title='Genetic Algorithm Timeline', xaxis_title='Time', yaxis_title='Steps')
 st.plotly_chart(fig, use_container_width=True)

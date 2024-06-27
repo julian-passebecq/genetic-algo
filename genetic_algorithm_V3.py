@@ -1,4 +1,5 @@
 import random
+import numpy as np
 from deap import base, creator, tools, algorithms
 from utils_V3 import AGENTS, SHIFTS, SECURITY_AGENTS, APPOINTMENT_TYPES
 
